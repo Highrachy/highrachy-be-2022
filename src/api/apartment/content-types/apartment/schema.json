@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "apartments",
+  "info": {
+    "singularName": "apartment",
+    "pluralName": "apartments",
+    "displayName": "Apartment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "default": "Generated automatically based on the name"
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "totalUnits": {
+      "type": "integer",
+      "default": 0
+    },
+    "availableUnits": {
+      "type": "integer",
+      "default": 0
+    },
+    "baths": {
+      "type": "integer",
+      "default": 0
+    },
+    "beds": {
+      "type": "integer",
+      "default": 0
+    },
+    "toilets": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
