@@ -55,6 +55,10 @@
     "toilets": {
       "type": "integer",
       "default": 0
+    },
+    "availableSoon": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
