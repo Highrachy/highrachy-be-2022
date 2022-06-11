@@ -33,21 +33,27 @@
       "type": "string",
       "default": "Lagos"
     },
-    "minimum_requirements": {
+    "minimumRequirements": {
       "type": "richtext"
     },
-    "desired_skills": {
+    "desiredSkills": {
       "type": "richtext"
     },
-    "software_proficiency": {
+    "softwareProficiency": {
       "type": "richtext"
-    },
-    "expires_on": {
-      "type": "date",
-      "required": true
     },
     "note": {
       "type": "richtext"
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "job"
+    },
+    "available": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
