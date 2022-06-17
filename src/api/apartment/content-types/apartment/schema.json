@@ -59,6 +59,12 @@
     "availableSoon": {
       "type": "boolean",
       "default": false
+    },
+    "tenants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tenant.tenant",
+      "mappedBy": "apartment"
     }
   }
 }

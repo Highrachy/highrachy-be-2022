@@ -1,9 +1,9 @@
-const generateBlock = (info) => [
+const generateBlock = (info, prevJobs, total) => [
   {
     type: "section",
     text: {
       type: "mrkdwn",
-      text: `New Applicant - *${info.fullName}*:\n*<https://www.highrachy.com/careers/${info.job.slug}|${info.job.title}>*`,
+      text: `*Total Applicants:* ${total}`,
     },
   },
   {
@@ -26,7 +26,30 @@ const generateBlock = (info) => [
       text: `*Resume:*\n${info.resume}`,
     },
   },
+  {
+    type: "section",
+    text: {
+      type: "mrkdwn",
+      text: `*Previous Applications:* ${
+        prevJobs.length > 0 ? prevJobs.length : "None"
+      }`,
+    },
+  },
+  ...generatePrevJob(prevJobs),
 ];
+
+const generatePrevJob = (prevJobs) =>
+  prevJobs.length > 0
+    ? prevJobs.map(({ createdAt, job }) => ({
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: `- *${job.title}* on ${strapi.config.dateHelpers.getDate(
+            createdAt
+          )}`,
+        },
+      }))
+    : [];
 
 const NEW_APPLICANT = {
   border: "#630017", // Rosewood color
@@ -45,16 +68,40 @@ module.exports = {
         populate: "*",
       }
     );
-    console.log("applicantInfo", applicantInfo);
     const numberOfApplications = await strapi.entityService.findMany(
       "api::applicant.applicant",
       {
         filters: { job: applicantInfo.job.id },
       }
     );
+    const previousApplications = await strapi.entityService.findMany(
+      "api::applicant.applicant",
+      {
+        filters: {
+          email: applicantInfo.email,
+          job: { id: { $ne: applicantInfo.job.id } },
+        },
+        populate: {
+          job: {
+            fields: ["id", "title"],
+          },
+        },
+        fields: ["createdAt"],
+      }
+    );
+
+    console.log("previousApplications", previousApplications);
+
     await strapi.config.slack.sendSlackNotification(
-      `*Total Applicants:* ${numberOfApplications.length}`,
-      { ...NEW_APPLICANT, blocks: generateBlock(applicantInfo) }
+      `*${applicantInfo.fullName} - <https://www.highrachy.com/careers/${applicantInfo.job.slug}|${applicantInfo.job.title}>*`,
+      {
+        ...NEW_APPLICANT,
+        blocks: generateBlock(
+          applicantInfo,
+          previousApplications,
+          numberOfApplications.length
+        ),
+      }
     );
   },
 };
