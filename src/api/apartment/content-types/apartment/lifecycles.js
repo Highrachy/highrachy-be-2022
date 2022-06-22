@@ -6,7 +6,6 @@ const generateSlug = (data) =>
 module.exports = {
   beforeCreate(event) {
     const { data } = event.params;
-
     data.slug = generateSlug(data);
   },
 

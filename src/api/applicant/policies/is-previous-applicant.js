@@ -16,5 +16,5 @@ module.exports = async (policyContext, config, { strapi }) => {
     { filters: { email, job } }
   );
 
-  return !previousRegistration.length > 0;
+  return !(previousRegistration.length > 0);
 };

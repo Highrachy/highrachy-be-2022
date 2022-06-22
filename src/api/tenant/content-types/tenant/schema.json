@@ -1,0 +1,303 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tenants",
+  "info": {
+    "singularName": "tenant",
+    "pluralName": "tenants",
+    "displayName": "Tenant",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tenantFullName": {
+      "type": "string",
+      "required": true
+    },
+    "tenantProfileImage": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "middleName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "mobileTelephone": {
+      "type": "string",
+      "required": true
+    },
+    "homeTelephone": {
+      "type": "string"
+    },
+    "personalEmail": {
+      "type": "string",
+      "required": true
+    },
+    "workEmail": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": true
+    },
+    "bvn": {
+      "type": "string",
+      "required": true
+    },
+    "identificationType": {
+      "type": "string",
+      "required": true
+    },
+    "identificationNumber": {
+      "type": "string",
+      "required": true
+    },
+    "currentAddress": {
+      "type": "text",
+      "required": true
+    },
+    "postCode": {
+      "type": "string"
+    },
+    "timeAtCurrentAddress": {
+      "type": "string"
+    },
+    "stateOfOrigin": {
+      "type": "string"
+    },
+    "maritalStatus": {
+      "type": "string",
+      "required": true
+    },
+    "previousAddress": {
+      "type": "text",
+      "required": true
+    },
+    "facebook": {
+      "type": "text"
+    },
+    "twitter": {
+      "type": "text"
+    },
+    "instagram": {
+      "type": "text",
+      "required": true
+    },
+    "linkedin": {
+      "type": "text"
+    },
+    "emergencyEmail": {
+      "type": "string",
+      "required": true
+    },
+    "emergencyRelationship": {
+      "type": "string",
+      "required": true
+    },
+    "emergencyTelephone1": {
+      "type": "string",
+      "required": true
+    },
+    "emergencyTelephone2": {
+      "type": "string"
+    },
+    "emergencyAddress": {
+      "type": "string",
+      "required": true
+    },
+    "ownLastProperty": {
+      "type": "boolean"
+    },
+    "mortgageStatement": {
+      "type": "string"
+    },
+    "landlordFullName": {
+      "type": "string",
+      "required": true
+    },
+    "landlordEmail": {
+      "type": "string",
+      "required": true
+    },
+    "landlordTelephone": {
+      "type": "string",
+      "required": true
+    },
+    "landlordAddress": {
+      "type": "text",
+      "required": true
+    },
+    "landlordPostcode": {
+      "type": "string",
+      "required": true
+    },
+    "isSelfEmployed": {
+      "type": "boolean"
+    },
+    "employmentCompanyName": {
+      "type": "string",
+      "required": true
+    },
+    "employmentPositionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "employmentContractType": {
+      "type": "string",
+      "required": true
+    },
+    "employmentAddress": {
+      "type": "string",
+      "required": true
+    },
+    "employmentPostcode": {
+      "type": "string",
+      "required": true
+    },
+    "employmentStartDate": {
+      "type": "date",
+      "required": true
+    },
+    "employmentManagerName": {
+      "type": "string",
+      "required": true
+    },
+    "employmentManagerPosition": {
+      "type": "string",
+      "required": true
+    },
+    "employmentManagerEmail": {
+      "type": "string",
+      "required": true
+    },
+    "employmentManagerTelephone": {
+      "type": "string"
+    },
+    "employmentMoreDetails": {
+      "type": "string"
+    },
+    "companyFacebook": {
+      "type": "text"
+    },
+    "companyTwitter": {
+      "type": "text"
+    },
+    "companyInstagram": {
+      "type": "text",
+      "required": true
+    },
+    "companyLinkedin": {
+      "type": "text"
+    },
+    "changeEmployerSoon": {
+      "type": "string"
+    },
+    "offerLetterURL": {
+      "type": "string"
+    },
+    "dependantName1": {
+      "type": "string"
+    },
+    "dependantAge1": {
+      "type": "string"
+    },
+    "dependantRelationship1": {
+      "type": "string"
+    },
+    "dependantOccupation1": {
+      "type": "string"
+    },
+    "dependantIdentification1": {
+      "type": "string"
+    },
+    "dependantName2": {
+      "type": "string"
+    },
+    "dependantAge2": {
+      "type": "string"
+    },
+    "dependantRelationship2": {
+      "type": "string"
+    },
+    "dependantOccupation2": {
+      "type": "string"
+    },
+    "dependantIdentification2": {
+      "type": "string"
+    },
+    "dependantName3": {
+      "type": "string"
+    },
+    "dependantAge3": {
+      "type": "string"
+    },
+    "dependantRelationship3": {
+      "type": "string"
+    },
+    "dependantOccupation3": {
+      "type": "string"
+    },
+    "dependantIdentification3": {
+      "type": "string"
+    },
+    "dependantName4": {
+      "type": "string"
+    },
+    "dependantAge4": {
+      "type": "string"
+    },
+    "dependantRelationship4": {
+      "type": "string"
+    },
+    "dependantOccupation4": {
+      "type": "string"
+    },
+    "dependantIdentification4": {
+      "type": "string"
+    },
+    "dependantName5": {
+      "type": "string"
+    },
+    "dependantAge5": {
+      "type": "string"
+    },
+    "dependantRelationship5": {
+      "type": "string"
+    },
+    "dependantOccupation5": {
+      "type": "string"
+    },
+    "hasPersonsWithSpecialNeed": {
+      "type": "boolean"
+    },
+    "specialNeedDetails": {
+      "type": "text"
+    },
+    "pets": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "default": "APPLIED"
+    },
+    "apartment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::apartment.apartment",
+      "inversedBy": "tenants"
+    }
+  }
+}
