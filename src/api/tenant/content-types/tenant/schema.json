@@ -82,7 +82,7 @@
       "type": "string",
       "required": true
     },
-    "previousAddress": {
+    "previousEmployment": {
       "type": "text",
       "required": true
     },
@@ -121,7 +121,7 @@
     "ownLastProperty": {
       "type": "boolean"
     },
-    "mortgageStatement": {
+    "propertyEvidenceURL": {
       "type": "string"
     },
     "landlordFullName": {
@@ -143,6 +143,9 @@
     "landlordPostcode": {
       "type": "string",
       "required": true
+    },
+    "neverRentedBefore": {
+      "type": "boolean"
     },
     "isSelfEmployed": {
       "type": "boolean"
@@ -203,7 +206,7 @@
       "type": "text"
     },
     "changeEmployerSoon": {
-      "type": "string"
+      "type": "boolean"
     },
     "offerLetterURL": {
       "type": "string"
