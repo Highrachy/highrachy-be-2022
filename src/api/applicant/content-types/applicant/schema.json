@@ -36,9 +36,12 @@
       "target": "api::job.job",
       "inversedBy": "applicants"
     },
-    "reviewed": {
-      "type": "boolean",
-      "default": false
+    "notes": {
+      "type": "richtext"
+    },
+    "status": {
+      "type": "string",
+      "default": "APPLIED"
     }
   }
 }

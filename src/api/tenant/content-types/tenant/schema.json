@@ -93,11 +93,15 @@
       "type": "text"
     },
     "instagram": {
-      "type": "text",
-      "required": true
+      "type": "string",
+      "required": false
     },
     "linkedin": {
       "type": "text"
+    },
+    "emergencyFullName": {
+      "type": "string",
+      "required": true
     },
     "emergencyEmail": {
       "type": "string",
@@ -193,14 +197,14 @@
       "type": "string"
     },
     "companyFacebook": {
-      "type": "text"
+      "type": "string"
     },
     "companyTwitter": {
-      "type": "text"
+      "type": "string"
     },
     "companyInstagram": {
-      "type": "text",
-      "required": true
+      "type": "string",
+      "required": false
     },
     "companyLinkedin": {
       "type": "text"

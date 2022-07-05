@@ -90,8 +90,6 @@ module.exports = {
       }
     );
 
-    console.log("previousApplications", previousApplications);
-
     await strapi.config.slack.sendSlackNotification(
       `*${applicantInfo.fullName} - <https://www.highrachy.com/careers/${applicantInfo.job.slug}|${applicantInfo.job.title}>*`,
       {
