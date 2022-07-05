@@ -24,7 +24,7 @@ module.exports = createCoreController(
               fields: ["id", "title"],
             },
           },
-          fields: ["createdAt", "resume"],
+          fields: ["createdAt", "resume", "status"],
         }
       );
       return {

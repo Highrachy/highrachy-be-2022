@@ -53,10 +53,6 @@
       "type": "date",
       "required": true
     },
-    "bvn": {
-      "type": "string",
-      "required": true
-    },
     "identificationType": {
       "type": "string",
       "required": true
