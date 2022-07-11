@@ -101,5 +101,16 @@ module.exports = {
         ),
       }
     );
+
+    // await strapi
+    //   .plugin("email")
+    //   .service("email")
+    //   .send({
+    //     to: process.env.OUR_EMAIL || "haruna@highrachy.com",
+    //     from: "info@highrachy.com",
+    //     subject: `New Applicant ${applicantInfo.fullName} - ${applicantInfo.job.title}`,
+    //     text: "Hello world",
+    //     html: `<h4>Hello world</h4>`,
+    //   });
   },
 };

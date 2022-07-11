@@ -22,5 +22,18 @@ module.exports = {
         ...NEW_TENANT,
       }
     );
+
+    await strapi.config.email.send(strapi, {
+      subject: `New Tenant Application - ${tenantInfo.tenantFullName}`,
+      image: tenantInfo.tenantProfileImage,
+      title: `Apartment - ${tenantInfo.apartment.name} (${tenantInfo.apartment.type})`,
+      tableData: {
+        fullName: tenantInfo.tenantFullName,
+        email: tenantInfo.personalEmail,
+        phone: tenantInfo.homeTelephone,
+      },
+      buttonText: "View Full Profile",
+      buttonLink: `https://www.highrachy.com/admin/tenants/${result.id}`,
+    });
   },
 };
