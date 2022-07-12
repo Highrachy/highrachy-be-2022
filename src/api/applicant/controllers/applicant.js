@@ -11,7 +11,7 @@ module.exports = createCoreController(
   ({ strapi }) => ({
     async findOne(ctx) {
       const { data, meta } = await super.findOne(ctx);
-      console.log("data?.attributes.job.id", data?.attributes?.job.data.id);
+
       const previousApplications = await strapi.entityService.findMany(
         "api::applicant.applicant",
         {

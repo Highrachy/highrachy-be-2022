@@ -48,7 +48,7 @@ const generateHTMLEmail = ({
       title &&
       `<mj-section>
       <mj-column>
-        <mj-text font-size="24px" color="#333" font-family="Helvetica">${title}</mj-text>
+        <mj-text font-size="24px" color="#333" font-family="Helvetica" align="center">${title}</mj-text>
       </mj-column>
     </mj-section>`
     }
@@ -83,13 +83,15 @@ const generateHTMLEmail = ({
       `<mj-section padding="0">
       <mj-column>
         <mj-table>
-            ${Object.entries(tableData).map(
-              ([key, value]) =>
-                `<tr style="border-bottom:1px solid #ecedee;border-top:1px solid #ecedee;text-align:left;padding:15px 0;">
+            ${Object.entries(tableData)
+              .map(
+                ([key, value]) =>
+                  `<tr style="border-bottom:1px solid #ecedee;border-top:1px solid #ecedee;text-align:left;padding:15px 0;">
               <th style="padding: 15px 0;">${camelToSentence(key)}</th>
               <td style="padding: 15px 0;">${value}</th>
             </tr>`
-            )}
+              )
+              .join("")}
         </mj-table>
       </mj-column>
     </mj-section>`
@@ -142,9 +144,9 @@ const generateTextEmail = ({
   content += (contentTop && contentTop.replace("<br>", "\n")) || "";
   content +=
     Object.keys(tableData).length > 0
-      ? Object.entries(tableData).map(
-          ([key, value]) => `\n\n - ${camelToSentence(key)}: ${value} \n`
-        )
+      ? Object.entries(tableData)
+          .map(([key, value]) => `\n\n - ${camelToSentence(key)}: ${value} \n`)
+          .join("")
       : "";
   content += contentBottom ? `\n\n${contentBottom.replace("<br>", "\n")}` : "";
 
