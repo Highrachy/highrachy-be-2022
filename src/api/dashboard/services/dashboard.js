@@ -20,13 +20,26 @@ module.exports = () => ({
   reports: async () => {
     try {
       const applicants = await strapi.entityService.findMany(
-        "api::applicant.applicant"
+        "api::applicant.applicant",
+        {
+          sort: { createdAt: "desc" },
+        }
       );
-      const jobs = await strapi.entityService.findMany("api::job.job", {});
+      const jobs = await strapi.entityService.findMany("api::job.job", {
+        sort: { createdAt: "desc" },
+      });
       const apartments = await strapi.entityService.findMany(
-        "api::apartment.apartment"
+        "api::apartment.apartment",
+        {
+          sort: { createdAt: "desc" },
+        }
       );
-      const tenants = await strapi.entityService.findMany("api::tenant.tenant");
+      const tenants = await strapi.entityService.findMany(
+        "api::tenant.tenant",
+        {
+          sort: { createdAt: "desc" },
+        }
+      );
 
       const applicantsCount = await strapi.entityService.count(
         "api::applicant.applicant",
@@ -48,14 +61,21 @@ module.exports = () => ({
           available: true,
         },
       });
-      const apartmentsCount = await strapi.entityService.count(
+
+      const apartmentsWithUnits = await strapi.entityService.findMany(
         "api::apartment.apartment",
         {
           filters: {
-            availableUnits: 0,
+            availableUnits: { $ne: 0 },
           },
         }
       );
+
+      const apartmentsCount = apartmentsWithUnits.reduce(
+        (acc, apartment) => acc + apartment.availableUnits,
+        0
+      );
+
       const tenantsCount = await strapi.entityService.count(
         "api::tenant.tenant",
         {
@@ -69,7 +89,7 @@ module.exports = () => ({
         applicants: {
           total: applicants.length,
           data: getEntries(applicants),
-          text: `${applicantsCount} new application${
+          text: `${applicantsCount} pending application${
             applicantsCount === 1 ? "" : "s"
           }`,
         },
@@ -83,7 +103,7 @@ module.exports = () => ({
         tenants: {
           total: tenants.length,
           data: getEntries(tenants),
-          text: `${tenantsCount} new application${
+          text: `${tenantsCount} pending application${
             tenantsCount === 1 ? "" : "s"
           }`,
         },
