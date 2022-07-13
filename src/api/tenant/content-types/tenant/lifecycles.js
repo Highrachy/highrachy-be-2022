@@ -30,7 +30,7 @@ module.exports = {
       tableData: {
         fullName: tenantInfo.tenantFullName,
         email: tenantInfo.personalEmail,
-        phone: tenantInfo.homeTelephone,
+        phone: tenantInfo.mobileTelephone,
       },
       buttonText: "View Full Profile",
       buttonLink: `https://www.highrachy.com/admin/tenants/${result.id}`,
