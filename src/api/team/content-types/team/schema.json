@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "singularName": "team",
+    "pluralName": "teams",
+    "displayName": "Team",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "priority": {
+      "type": "integer",
+      "max": 20,
+      "required": true,
+      "default": 1,
+      "min": 0
+    },
+    "publish": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
