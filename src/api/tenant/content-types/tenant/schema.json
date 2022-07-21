@@ -80,7 +80,7 @@
     },
     "previousEmployment": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "facebook": {
       "type": "text"
@@ -130,7 +130,7 @@
     },
     "landlordEmail": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "landlordTelephone": {
       "type": "string",
@@ -184,7 +184,7 @@
     },
     "employmentManagerEmail": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "employmentManagerTelephone": {
       "type": "string"
