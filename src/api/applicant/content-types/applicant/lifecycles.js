@@ -102,15 +102,16 @@ module.exports = {
       }
     );
 
-    // await strapi
-    //   .plugin("email")
-    //   .service("email")
-    //   .send({
-    //     to: process.env.OUR_EMAIL || "haruna@highrachy.com",
-    //     from: "info@highrachy.com",
-    //     subject: `New Applicant ${applicantInfo.fullName} - ${applicantInfo.job.title}`,
-    //     text: "Hello world",
-    //     html: `<h4>Hello world</h4>`,
-    //   });
+    await strapi.config.email.send(strapi, {
+      to: applicantInfo.email,
+      subject: `Thank you for your application at Highrachy`,
+      firstName: applicantInfo.fullName,
+      contentTop: `Thank you for applying to the <strong>${applicantInfo.job.title}</strong> position at Highrachy.<br><br>
+Our hiring team is currently reviewing all applications and we will be in touch with you soon. <br><br>
+Thank you, again, for taking the time to apply to this role at Highrachy.<br><br><br>
+
+Best Regards,<br>
+People's Team.`,
+    });
   },
 };

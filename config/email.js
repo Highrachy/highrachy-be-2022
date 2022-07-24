@@ -79,6 +79,7 @@ const generateHTMLEmail = ({
     </mj-section>`
     }
     ${
+      tableData &&
       Object.keys(tableData).length > 0 &&
       `<mj-section padding="0">
       <mj-column>
@@ -142,12 +143,16 @@ const generateTextEmail = ({
       ? `[${buttonText}](${buttonLink}) \n\n or copy this url and view in a web browser ${buttonLink}`
       : "";
   content += (contentTop && contentTop.replace("<br>", "\n")) || "";
-  content +=
-    Object.keys(tableData).length > 0
-      ? Object.entries(tableData)
-          .map(([key, value]) => `\n\n - ${camelToSentence(key)}: ${value} \n`)
-          .join("")
-      : "";
+  if (tableData && Object.keys(tableData).length > 0) {
+    content +=
+      Object.keys(tableData).length > 0
+        ? Object.entries(tableData)
+            .map(
+              ([key, value]) => `\n\n - ${camelToSentence(key)}: ${value} \n`
+            )
+            .join("")
+        : "";
+  }
   content += contentBottom ? `\n\n${contentBottom.replace("<br>", "\n")}` : "";
 
   // Note: The text is formatted as it should appear on the device
