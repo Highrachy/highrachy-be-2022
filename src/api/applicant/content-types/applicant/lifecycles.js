@@ -114,4 +114,28 @@ Best Regards,<br>
 People's Team.`,
     });
   },
+  async afterUpdate({ result }) {
+    if (result.status === "REJECTED") {
+      const applicantInfo = await strapi.entityService.findOne(
+        "api::applicant.applicant",
+        result.id,
+        {
+          populate: "*",
+        }
+      );
+
+      await strapi.config.email.send(strapi, {
+        to: applicantInfo.email,
+        subject: `Your application for the ${applicantInfo.job.title} position`,
+        firstName: applicantInfo.fullName,
+        contentTop: `Thank you for applying with Highrachy for the role of <strong>${applicantInfo.job.title}</strong>. We really appreciate your interest in joining our company and we want to thank you for the time and energy you invested in your application for this position.<br><br>
+For each opening, our team carefully selects from a pool of highly qualified professionals on the basis of professional experience, role alignment and cultural fitment. Our team has thoroughly reviewed your application, however, we feel that other candidates are more suitable for the position. <br><br>
+While you were not successful on this occasion, we would encourage you to stay connected with us through <a href="https://highrachy.com/careers">Highrachy Careers</a> and <a href="https://www.linkedin.com/company/highrachy-investment-and-technology-limited">LinkedIn</a> to keep discovering more about Highrachy and apply again if you find a position that is suitable.<br><br>
+We wish you all the best in your future endeavours.<br><br>
+
+Best Regards,<br>
+People's Team.`,
+      });
+    }
+  },
 };

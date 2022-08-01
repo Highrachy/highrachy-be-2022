@@ -45,14 +45,7 @@ module.exports = () => ({
         "api::applicant.applicant",
         {
           filters: {
-            $or: [
-              {
-                status: "WAITING LIST",
-              },
-              {
-                status: "APPLIED",
-              },
-            ],
+            status: "APPLIED",
           },
         }
       );
@@ -80,7 +73,14 @@ module.exports = () => ({
         "api::tenant.tenant",
         {
           filters: {
-            status: "APPLIED",
+            $or: [
+              {
+                status: "WAITING LIST",
+              },
+              {
+                status: "APPLIED",
+              },
+            ],
           },
         }
       );
