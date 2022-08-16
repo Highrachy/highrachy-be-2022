@@ -142,7 +142,7 @@
     },
     "landlordPostcode": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "neverRentedBefore": {
       "type": "boolean"
@@ -168,7 +168,7 @@
     },
     "employmentPostcode": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "employmentStartDate": {
       "type": "date",
