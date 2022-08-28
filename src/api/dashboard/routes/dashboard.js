@@ -9,5 +9,14 @@ module.exports = {
         middlewares: [],
       },
     },
+    {
+      method: "POST",
+      path: "/dashboard/send-interview-email",
+      handler: "dashboard.sendInterviewEmail",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
   ],
 };

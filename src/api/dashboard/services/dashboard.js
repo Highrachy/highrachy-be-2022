@@ -119,4 +119,50 @@ module.exports = () => ({
       return err;
     }
   },
+  sendInterviewEmail: async ({
+    id,
+    date,
+    time,
+    location,
+    meetingLink,
+    isOnline,
+    interviewContent,
+  }) => {
+    try {
+      const applicantInfo = await strapi.entityService.findOne(
+        "api::applicant.applicant",
+        id,
+        {
+          populate: "*",
+        }
+      );
+
+      const address = isOnline ? { "Meeting Link": meetingLink } : { location };
+
+      await strapi.config.email.send(strapi, {
+        to: applicantInfo.email,
+        subject: `Interview with Highrachy for the ${applicantInfo.job.title} position`,
+        firstName: applicantInfo.fullName,
+        tableData: {
+          Date: date,
+          Time: time,
+          ...address,
+        },
+        contentTop: `Thank you for applying with Highrachy for the role of <strong>${applicantInfo.job.title}</strong>. We really appreciate your interest in joining our company and we want to thank you for the time and energy you invested in your application for this position.<br><br>
+       ${interviewContent}<br><br>
+        We have included the details of the interview below: <br><br>`,
+        contentBottom: `
+        Looking forward to meeting you,<br><br>
+        Best Regards,<br>
+        People's Team.`,
+      });
+      const data = {
+        message: "Post Request Successful",
+      };
+
+      return { data, result, applicantInfo };
+    } catch (err) {
+      return err;
+    }
+  },
 });

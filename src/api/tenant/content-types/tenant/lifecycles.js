@@ -49,25 +49,26 @@ Operations Team.`,
     });
   },
   async afterUpdate({ result }) {
-    // https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/entity-service/crud.html
-    const tenantInfo = await strapi.entityService.findOne(
-      "api::tenant.tenant",
-      result.id,
-      {
-        populate: "*",
-      }
-    );
+    if (result.status === "REJECTED") {
+      const tenantInfo = await strapi.entityService.findOne(
+        "api::tenant.tenant",
+        result.id,
+        {
+          populate: "*",
+        }
+      );
 
-    await strapi.config.email.send(strapi, {
-      to: tenantInfo.personalEmail,
-      subject: `Updates on your tenant application`,
-      firstName: tenantInfo.firstName,
-      contentTop: `Thank you for your recent application.<br><br>
+      await strapi.config.email.send(strapi, {
+        to: tenantInfo.personalEmail,
+        subject: `Updates on your tenant application`,
+        firstName: tenantInfo.firstName,
+        contentTop: `Thank you for your recent application.<br><br>
 After careful consideration, we regret to inform you that we will not be moving forward with your tenant application at this particular period. <br><br>
 Thanks again for your application and we are sorry that it didn't work out at this time. Take care, and good luck. <br><br><br>
 
 Best Regards,<br>
 Operations Team.`,
-    });
+      });
+    }
   },
 };
